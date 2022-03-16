@@ -1,29 +1,27 @@
 var express = require('express');
 var router = express.Router();
-const Autor = require ("../models/autor");
 
-/* GET home page. */
+const Autor = require ("../models/autor");
 router.get('/', async function(req, res, next) {
   const autores = await Autor.selecionar();
   res.json(autores. rows);
-  res.render('index', { title: 'Express' });
 });
 
-router.get('/', async function(req, res, next) {
-  const autores = await Autor.deletar(id);
+router.get('/deletar', async function(req, res, next) {
+  const autor = {id:"1"}
+  const autores = await Autor.deletar(autor);
   res.json(autores. rows);
-  res.render('index', { title: 'Express' });
 });
 
-router.get('/', async function(req, res, next) {
-  const autores = await Autor.atualizar(id);
+router.get('/atualizar', async function(req, res, next) {
+   const autor = {nome:"Maria", sobrenome:"Oliveira", data_nasc:"1990/07/02", id:"1"} 
+  const autores = await Autor.atualizar(autor);
   res.json(autores. rows);
-  res.render('index', { title: 'Express' });
 });
 
-router.get('/', async function(req, res, next) {
-  const autores = await Autor.inserir();
+router.post('/inserir', async function(req, res, next) {
+  const autor = {nome:"José", sobrenome:"Santos", data_nasc:"1985/05/27"}
+  const autores = await Autor.inserir(autor);
   res.json(autores. rows);
-  res.render('index', { title: 'Express' });
 });
 module.exports = router;
