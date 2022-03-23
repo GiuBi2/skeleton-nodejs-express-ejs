@@ -1,6 +1,6 @@
 let connect = function (){
  if (global.connection){
-   return globa.connection.connect();
+   return global.connection.connect();
  }               
   const { Pool } = require("pg");
   const pool = new Pool ({
